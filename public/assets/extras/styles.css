@@ -1,0 +1,357 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 40px;
+  background: url(../../assets/extras/img/login.jpg);
+}
+
+
+
+
+.container {
+max-width: 550px;
+width: 100%;
+position: relative;
+z-index: 1;
+
+}
+
+.wizard {
+background: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border-radius: 24px;
+box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+overflow: hidden;
+border: 1px solid rgba(255, 255, 255, 0.2);
+margin-top: -70px;
+}
+
+.wizard-inner {
+padding: 40px 40px 30px;
+position: relative;
+}
+
+.connecting-line {
+height: 2px;
+background: rgba(255, 255, 255, 0.2);
+position: absolute;
+width: calc(100% - 120px);
+top: 65px;
+left: 60px;
+z-index: 1;
+}
+
+.nav-tabs {
+border: none;
+position: relative;
+z-index: 2;
+}
+
+.nav-tabs .nav-item {
+flex: 1;
+}
+
+.nav-tabs .nav-link {
+border: none;
+background: transparent !important;
+padding: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+position: relative;
+}
+
+.nav-tabs .nav-link::before,
+.nav-tabs .nav-link::after {
+display: none;
+}
+
+.round-tab {
+width: 50px;
+height: 50px;
+line-height: 50px;
+display: inline-block;
+border-radius: 50%;
+background: rgba(255, 255, 255, 0.2);
+backdrop-filter: blur(10px);
+color: rgba(255, 255, 255, 0.7);
+text-align: center;
+font-weight: 700;
+font-size: 18px;
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-link.active .round-tab {
+background: linear-gradient(135deg, #a855f7 0%, #c084fc 100%);
+color: white;
+box-shadow: 0 6px 25px rgba(168, 85, 247, 0.6),
+            0 0 0 3px rgba(168, 85, 247, 0.3);
+transform: scale(1.15);
+border-color: rgba(255, 255, 255, 0.5);
+}
+
+.nav-item:not(.disabled) .nav-link:hover .round-tab {
+transform: scale(1.08);
+background: rgba(255, 255, 255, 0.3);
+cursor: pointer;
+}
+
+.nav-item.disabled .nav-link {
+pointer-events: none;
+}
+
+.tab-content {
+padding: 35px 40px 40px;
+}
+
+h4 {
+color: white;
+font-weight: 700;
+margin-bottom: 35px;
+font-size: 26px;
+text-align: center;
+text-shadow: 0 2px 15px rgba(168, 85, 247, 0.5);
+letter-spacing: 0.5px;
+}
+
+.form-control, .form-select {
+border: 2px solid rgba(255, 255, 255, 0.3);
+border-radius: 14px;
+padding: 16px 20px;
+font-size: 15px;
+transition: all 0.3s ease;
+background: rgba(255, 255, 255, 0.15);
+backdrop-filter: blur(15px);
+-webkit-backdrop-filter: blur(15px);
+color: white;
+font-weight: 500;
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.form-control:focus, .form-select:focus {
+border-color: rgba(168, 85, 247, 0.8);
+box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.2),
+            0 8px 20px rgba(168, 85, 247, 0.3);
+background: rgba(255, 255, 255, 0.25);
+outline: none;
+color: white;
+transform: translateY(-2px);
+}
+
+.form-control::placeholder {
+color: rgba(255, 255, 255, 0.7);
+font-weight: 400;
+}
+
+.form-control::-webkit-calendar-picker-indicator {
+filter: invert(1);
+cursor: pointer;
+}
+
+.form-select {
+cursor: pointer;
+appearance: none;
+-webkit-appearance: none;
+-moz-appearance: none;
+background-image: none;
+color: rgba(255, 255, 255, 0.9);
+}
+
+.form-select option {
+background: rgba(30, 20, 50, 0.95);
+color: white;
+padding: 10px;
+}
+
+.mb-3 {
+margin-bottom: 20px !important;
+}
+
+.btn {
+padding: 14px 38px;
+border-radius: 14px;
+font-weight: 700;
+font-size: 15px;
+transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+border: none;
+text-transform: uppercase;
+letter-spacing: 1px;
+position: relative;
+overflow: hidden;
+}
+
+.btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: rgba(255, 255, 255, 0.2);
+transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+left: 100%;
+}
+
+.btn-primary {
+background: linear-gradient(135deg, #a855f7 0%, #c084fc 100%);
+box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5);
+color: white;
+border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary:hover {
+transform: translateY(-3px);
+box-shadow: 0 10px 30px rgba(168, 85, 247, 0.6);
+background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%);
+}
+
+.btn-secondary {
+background: rgba(108, 117, 125, 0.8);
+backdrop-filter: blur(10px);
+box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+color: white;
+border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+transform: translateY(-3px);
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+background: rgba(90, 98, 104, 0.9);
+}
+
+.btn:active {
+transform: translateY(-1px);
+}
+
+/* Animaciones */
+.tab-pane {
+animation: slideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideIn {
+from {
+opacity: 0;
+transform: translateX(30px);
+}
+to {
+opacity: 1;
+transform: translateX(0);
+}
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+.wizard-inner {
+padding: 30px 20px 25px;
+}
+
+.tab-content {
+padding: 25px 20px 30px;
+}
+
+.round-tab {
+width: 45px;
+height: 45px;
+line-height: 45px;
+font-size: 16px;
+}
+
+.connecting-line {
+top: 60px;
+left: 45px;
+width: calc(100% - 90px);
+}
+
+h4 {
+font-size: 22px;
+margin-bottom: 28px;
+}
+
+.btn {
+padding: 12px 28px;
+font-size: 13px;
+}
+
+.form-control, .form-select {
+padding: 14px 18px;
+}
+}
+
+label{
+    color: white;
+}
+
+.enlaces {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 240px;
+  margin-left: 270px;
+  margin-top: 10px;
+  margin-bottom: -30px;
+
+}
+
+.enlaces a {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  font-size: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.enlaces a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: left 0.4s ease;
+}
+
+.enlaces a:hover::before {
+  left: 100%;
+}
+
+.enlaces a:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+.enlaces a.active {
+  background: linear-gradient(135deg, #a855f7 0%, #c084fc 100%);
+  color: white;
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.5);
+  transform: scale(1.02);
+}
+
+.enlaces a.active:hover {
+  transform: scale(1.02) translateY(-2px);
+}
+
+

@@ -1,0 +1,224 @@
+
+
+/* LOGIN */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+background-color: #f4f6f8;
+margin: 0;
+padding: 40px;
+background: url(../../assets/extras/img/login.jpg);
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 0;
+}
+
+.container{
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+form {
+    margin: o auto;
+  max-width: 450px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+              0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 45px 40px;
+  animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+
+/* Enlaces Login/Register */
+.enlaces {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 35px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 240px;
+  height: 50px;
+  margin-left: 140px;
+  margin-top: -20px;
+}
+
+.enlaces a {
+  flex: 1;
+  text-align: center;
+  padding: 14px 30px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  width: 20px;
+}
+
+.enlaces a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: left 0.4s ease;
+}
+
+.enlaces a:hover::before {
+  left: 100%;
+}
+
+.enlaces a:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+.enlaces a.active {
+  background: linear-gradient(135deg, #a855f7 0%, #c084fc 100%);
+  color: white;
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.5);
+  transform: scale(1.02);
+}
+
+.enlaces a.active:hover {
+  transform: scale(1.02) translateY(-2px);
+}
+
+/* Form Controls */
+.form-control {
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 14px;
+  padding: 16px 20px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.form-control:focus {
+  border-color: rgba(168, 85, 247, 0.8);
+  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.2),
+              0 8px 20px rgba(168, 85, 247, 0.3);
+  background: rgba(255, 255, 255, 0.25);
+  outline: none;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+}
+
+.mb-3 {
+  margin-bottom: 24px !important;
+}
+
+/* Link Recuperar Contraseña */
+form > a {
+  display: block;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  margin-bottom: 25px;
+  margin-top: -8px;
+}
+
+form > a:hover {
+  color: #c084fc;
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Botón */
+.btn {
+  padding: 16px 40px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #a855f7 0%, #c084fc 100%);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(168, 85, 247, 0.6);
+  background: linear-gradient(135deg, #c084fc 0%, #a855f7 100%);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+}
+
+h2.recuperar{
+    color: white;
+    margin-bottom: 30px;
+    font-size: 25px;
+}
