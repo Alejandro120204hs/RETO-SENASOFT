@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>Login</title>
     <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -13,24 +13,18 @@
 <body>
 
     <div class="container">
-        <form>
-       <a href="login.html" class="recuperar"><img src="../../public/assets/img/logo-white.png" alt=""></a>
-        <div class="enlaces">
-            <a href="login.html" >Ingresar</a>
-            <a href="register.html" class="active" >Registrarse</a>
-        </div>
-        <div class="mb-3">
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nombres">
+        <form class="recuperar">
+             <a href="login.php" class="recuperar"><img src="../../public/assets/img/logo-white.png" alt=""></a>
+            <h2>Recuperar Contraseña</h2>
+         <div class="mb-3">
+            <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Identificacion">
         </div>
         <div class="mb-3">
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
         </div>
-        <div class="mb-3">
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
-        </div>
+       
 
-        
-        <button type="submit" class="btn btn-primary">Registrar</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     </div>
     
