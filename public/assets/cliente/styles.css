@@ -1,0 +1,384 @@
+  /* === IMPORTAR FUENTE MODERNA === */
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  * {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  body {
+    background: linear-gradient(to bottom, #fefefe 0%, #faf8ff 100%);
+    min-height: 100vh;
+  }
+
+  /* === NAVBAR GENERAL === */
+  .navbar {
+    position: relative;
+    padding: 20px 40px;
+    background-color: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid #f5f3ff;
+  }
+
+  /* LOGO IZQUIERDA */
+  .navbar-brand img {
+    height: 42px;
+    transition: transform 0.3s ease;
+  }
+
+  .navbar-brand img:hover {
+    transform: scale(1.03);
+  }
+
+  /* AVIÓN CENTRADO */
+  .navbar .avion {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 34px;
+    margin-bottom: 10px;
+    margin-top: -16px;
+    filter: drop-shadow(0 2px 6px rgba(124, 58, 237, 0.12));
+  }
+
+  /* LISTA NAVBAR */
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    margin-right: 10px;
+    gap: 20px;
+  }
+
+  /* NOMBRE DE USUARIO */
+  .navbar-nav h2 {
+    font-size: 15px;
+    margin: 0;
+    color: #2d3748;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  /* ICONO CERRAR SESIÓN */
+  .cerrar-sesion {
+    height: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0.65;
+  }
+
+  .cerrar-sesion:hover {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+
+  /* === SECCIÓN HERO === */
+  #hero {
+    background: #ffffff;
+    padding: 60px 40px;
+    border-radius: 20px;
+    max-width: 1050px;
+    margin: 40px auto;
+    box-shadow: 0 0 16px #bdbdbd;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #f3f0ff;
+  }
+
+  /* Decoración sutil esquina superior izquierda */
+  #hero::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    left: -60px;
+    width: 180px;
+    height: 180px;
+    background: #7C3AED;
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  /* Decoración sutil esquina inferior derecha */
+  #hero::after {
+    content: "";
+    position: absolute;
+    bottom: -70px;
+    right: -70px;
+    width: 200px;
+    height: 200px;
+    background: #7C3AED;
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  /* === OPCIONES DE VIAJE === */
+  .check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .check .form-check {
+    background: #fafafa;
+    padding: 14px 32px;
+    border-radius: 50px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    border: 1.5px solid #f0f0f0;
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+
+  .check .form-check:hover {
+    background: #ffffff;
+    border-color: #e9d5ff;
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.08);
+    transform: translateY(-1px);
+  }
+
+  .check .form-check:has(.form-check-input:checked) {
+    background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+    border-color: #7C3AED;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+  }
+
+  .check label {
+    font-size: 15px;
+    color: #4b5563;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 0;
+    transition: color 0.25s ease;
+  }
+
+  .check .form-check:has(.form-check-input:checked) label {
+    color: #ffffff;
+  }
+
+  .form-check-input {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    margin-top: 0;
+    border: 2px solid #d1d5db;
+    transition: all 0.2s ease;
+  }
+
+  .form-check-input:checked {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    box-shadow: none;
+  }
+
+  .form-check-input:focus {
+    box-shadow: none;
+    border-color: #7C3AED;
+  }
+
+  /* === FORMULARIO === */
+  form {
+    background: #fafafa;
+    border-radius: 18px;
+    padding: 40px 36px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    border: 1px solid #f0f0f0;
+    transition: .5s;
+  }
+
+  form:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 5px #7C3AED;
+  }
+
+  form select,
+  form input[type="date"] {
+    border-radius: 12px;
+    border: 1.5px solid #e5e7eb;
+    padding: 14px 16px;
+    transition: all 0.25s ease;
+    font-size: 15px;
+    color: #374151;
+    background-color: #ffffff;
+    font-weight: 500;
+  }
+
+  form select:focus,
+  form input:focus {
+    border-color: #7C3AED;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.06);
+    outline: none;
+  }
+
+  form select:hover,
+  form input:hover {
+    border-color: #c4b5fd;
+    background-color: #ffffff;
+  }
+
+  form h5 {
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  label.form-label {
+    color: black;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  /* === BOTÓN BUSCAR VUELOS === */
+  form a {
+    display: inline-block;
+    background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 15px 40px;
+    border-radius: 12px;
+    letter-spacing: 0.2px;
+    margin-top: 28px;
+    transition: all 0.3s ease;
+    font-size: 15px;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+    border: none;
+  }
+
+  form a:hover {
+    background: linear-gradient(135deg, #6D28D9 0%, #7C3AED 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
+  }
+
+  form a:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.25);
+  }
+
+  /* === EFECTOS DE FORMULARIO === */
+  form .row {
+    margin-bottom: 20px;
+  }
+
+  form .col-md-4,
+  form .col-md-6 {
+    transition: transform 0.2s ease;
+  }
+
+  /* === PLACEHOLDER STYLING === */
+  ::placeholder {
+    color: #9ca3af;
+    opacity: 1;
+  }
+
+  /* === SELECT ARROW === */
+  select.form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 12px;
+  }
+
+  /* === RESPONSIVO === */
+  @media (max-width: 768px) {
+    #hero {
+      padding: 40px 20px;
+      margin: 20px;
+      border-radius: 18px;
+    }
+
+    .check {
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .check .form-check {
+      width: 100%;
+      justify-content: center;
+    }
+
+    form {
+      padding: 32px 20px;
+    }
+
+    form a {
+      width: 100%;
+      text-align: center;
+      padding: 14px 0;
+    }
+
+    .navbar {
+      padding: 16px 20px;
+    }
+  }
+
+  h2.titulo{
+    font-size: 20px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+
+  /* FORMULARIO SOLO IDA */
+
+  .solo-ida {
+    background: #ffffff;
+    padding: 60px 40px;
+    border-radius: 20px;
+    max-width: 1050px;
+    margin: 40px auto;
+    box-shadow: 0 0 16px #bdbdbd;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #f3f0ff;
+  }
+
+  /* Decoración sutil esquina superior izquierda */
+  .solo-ida::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    left: -60px;
+    width: 180px;
+    height: 180px;
+    background: #7C3AED;
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  /* Decoración sutil esquina inferior derecha */
+  .solo-ida::after {
+    content: "";
+    position: absolute;
+    bottom: -70px;
+    right: -70px;
+    width: 200px;
+    height: 200px;
+    background: #7C3AED;
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+
+/* Aplica color cuando el JS agrega la clase .active */
+.check .form-check.active {
+  background: linear-gradient(135deg, #7C3AED 0%, #8B5CF6 100%);
+  border-color: #7C3AED;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+}
+
+.check .form-check.active label {
+  color: #fff;
+}
+  
