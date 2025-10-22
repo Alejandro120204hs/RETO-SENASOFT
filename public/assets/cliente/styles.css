@@ -381,4 +381,32 @@
 .check .form-check.active label {
   color: #fff;
 }
+
+/* Mejora el estilo del autocompletado */
+input[list] {
+  background-image: url('https://cdn-icons-png.flaticon.com/512/61/61088.png');
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: right 10px center;
+  padding-right: 30px;
+}
+
+/* Estilos generales */
+.titulo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.check .form-check-input {
+  margin-right: 0.5rem;
+}
+
+
+
+
+
+
+
   
