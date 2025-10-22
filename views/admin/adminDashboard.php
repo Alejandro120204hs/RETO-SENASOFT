@@ -11,7 +11,7 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="adminDashboard.html">
+        <a class="navbar-brand" href="adminDashboard.php">
           <img src="../../public/assets/img/logo-final-sky.png" alt="Logo" />
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -80,7 +80,7 @@
         </tbody>
         
       </table>
-      <a href="adminsDashboardRegistrarVuelo.html" class="registrar">Registrar Vuelos</a>
+      <a href="adminsDashboardRegistrarVuelo.php" class="registrar">Registrar Vuelos</a>
     </div>
   </div>
 
