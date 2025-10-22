@@ -15,7 +15,7 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
-                <a class="navbar-brand" href="clienteDashboard.html"><img src="../../public/assets/img/logo-final-sky.png" alt=""></a>
+                <a class="navbar-brand" href="clienteDashboard.php"><img src="../../public/assets/img/logo-final-sky.png" alt=""></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -77,7 +77,7 @@
                     </div>
                     <div class="text-center">
                         <h5><span>$185.000</span> COP</h5>
-                        <a href="clienteDashboardRegistro.html" class="seleccionar">Seleccionar</a>
+                        <a href="clienteDashboardRegistro.php" class="seleccionar">Seleccionar</a>
                     </div>
                 </div>
             </div>
@@ -114,7 +114,7 @@
                     </div>
                     <div class="text-center">
                         <h5><span>$195.000</span> COP</h5>
-                        <a href="clienteDashboardRegistro.html" class="seleccionar">Seleccionar</a>
+                        <a href="clienteDashboardRegistro.php" class="seleccionar">Seleccionar</a>
                     </div>
                 </div>
             </div>

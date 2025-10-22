@@ -17,7 +17,7 @@
   <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="clienteDashboard.html">
+        <a class="navbar-brand" href="clienteDashboard.php">
           <img src="../../public/assets/img/logo-final-sky.png" alt="Logo" />
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -92,7 +92,7 @@
           </div>
         </div>
 
-        <a href="clienteVuelosIdaRegreso.html" class="btn btn-primary">Buscar vuelos</a>
+        <a href="clienteVuelosIdaRegreso.php" class="btn btn-primary">Buscar vuelos</a>
       </form>
     </div>
 
@@ -128,7 +128,7 @@
           </div>
         </div>
 
-        <a href="clienteVuelosIda.html" class="btn btn-primary">Buscar vuelos</a>
+        <a href="clienteVuelosIda.php" class="btn btn-primary">Buscar vuelos</a>
       </form>
     </div>
 

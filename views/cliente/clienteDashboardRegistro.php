@@ -16,7 +16,7 @@
   <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="clienteDashboard.html">
+        <a class="navbar-brand" href="clienteDashboard.php">
           <img src="../../public/assets/img/logo-final-sky.png" alt="">
         </a>
 
