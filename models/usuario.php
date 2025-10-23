@@ -1,7 +1,7 @@
 <?php
 
     // SE CREA LA CLASE 
-    class usuario{
+    class Usuario{
         // CREAMOS LAS FUNCIONES PUBLICAS
         public function insertarUsuario($nombres,$correo,$clave){
              // INSTANCEAMOS LA CONEXION

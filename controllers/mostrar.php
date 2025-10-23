@@ -1,6 +1,6 @@
 <?php
 
-function cargarModelos(){
+    function cargarModelos(){
         // CREAMOS EL OBJETO PARA ALMACENAR LOS DATOS
         $objetoVuelo = new Vuelo();
         $datos = $objetoVuelo ->mostrarModelos();
@@ -136,6 +136,48 @@ function cargarModelos(){
 
         
     }
+
+    function cargarAsientosPorVuelo($id_vuelo){
+    $objetoVuelo = new Vuelo();
+    $datos = $objetoVuelo->mostrarAsientos($id_vuelo);
+
+        if(empty($datos)){
+            echo "<h2>No hay asientos disponibles</h2>";
+        } else {
+            foreach($datos as $f){
+                echo '
+                
+                <option value="'.$f['id'].'">'.$f['numero_asiento'].'</option>
+                
+                ';
+            }
+        
+        }
+    }
+
+    function mostrarPrecioVuelo($id_vuelo){
+    $objetoVuelo = new Vuelo();
+    $datos = $objetoVuelo->mostrarPrecio($id_vuelo);
+
+    if(empty($datos)){
+        echo "<h2>No se encontró el precio del vuelo</h2>";
+    } else {
+        echo '
+        <div class="summary-row">
+            <span>Precio por pasajero:</span>
+            <span id="precioUnitarioTexto">$'.number_format($datos['precio'], 0, ',', '.').' COP</span>
+        </div>
+        <input type="hidden" id="precioUnitario" value="'.$datos['precio'].'">
+        
+        
+        ';
+    }
+}
+
+
+
+    
+
 
     
 
