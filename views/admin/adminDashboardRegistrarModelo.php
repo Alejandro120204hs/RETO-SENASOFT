@@ -1,3 +1,7 @@
+<?php
+    require_once("../../controllers/sesionAdministrador.php");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -20,7 +24,7 @@
         <ul class="navbar-nav mx-auto">
           <li class="nav-item"><a href="adminDashboardRegistrarModelo.php" class="nav-link enlace-nav active">Modelos</a></li>
           <li class="nav-item"><a href="adminDashboardRegistrarAvion.php" class="nav-link enlace-nav">Aviones</a></li>
-          <li class="nav-item"><a href="adminDashboard.php" class="nav-link enlace-nav">Vuelos</a></li>
+          <li class="nav-item"><a href="adminDashboardRegistrarVuelo.php" class="nav-link enlace-nav">Vuelos</a></li>
         </ul>
 
         <div class="d-flex align-items-center gap-2">

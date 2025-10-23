@@ -93,7 +93,7 @@
           </div>
         </div>
 
-        <button type="submit">Buscar Vuelos</button>
+        <button class="vuelo" type="submit">Buscar Vuelos</button>
       </form>
     </div>
 
@@ -129,7 +129,7 @@
           </div>
         </div>
 
-        <button type="submit">Buscar Vuelos</button>
+        <button class="vuelo" type="submit">Buscar Vuelos</button>
       </form>
     </div>
 

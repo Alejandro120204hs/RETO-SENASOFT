@@ -403,6 +403,13 @@ input[list] {
   margin-right: 0.5rem;
 }
 
+button.vuelo{
+  padding: 10px 20px;
+  background: #7C3AED;
+  border: none;
+  border-radius: 10px;
+  color: white;
+}
 
 
 

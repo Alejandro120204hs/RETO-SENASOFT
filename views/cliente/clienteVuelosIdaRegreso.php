@@ -180,5 +180,15 @@
             }
         }
     </script>
+
+    <script>
+  // Guardar los filtros actuales para que se recuerden al redirigir
+  const urlParams = new URLSearchParams(window.location.search);
+  localStorage.setItem('origen', urlParams.get('origen') || '');
+  localStorage.setItem('destino', urlParams.get('destino') || '');
+  localStorage.setItem('fecha_salida', urlParams.get('fecha_salida') || '');
+  localStorage.setItem('fecha_regreso', urlParams.get('fecha_regreso') || '');
+</script>
+
 </body>
 </html>

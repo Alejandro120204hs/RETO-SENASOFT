@@ -450,3 +450,13 @@ label {
     font-size: 20px;
   }
 }
+
+.asiento-ocupado {
+  color: red;
+  background-color: #f8d7da;
+  cursor: not-allowed;
+}
+
+.asiento-disponible {
+  color: black;
+}
