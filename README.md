@@ -1,6 +1,10 @@
-======================================================
-SkyRoute — Sistema Web de Gestión de Tiquetes Aéreos
-======================================================
+╔═══════════════════════════════════════════════╗
+║ ✈️  SKYROUTE — SISTEMA DE RESERVA DE VUELOS   ║
+║   PHP MVC | MySQL | Bootstrap | GitFlow       ║
+╚═══════════════════════════════════════════════╝
+
+
+
 
 SkyRoute es una aplicación web desarrollada bajo el modelo MVC con PHP puro y base de datos MySQL, diseñada para gestionar el proceso completo de compra y reserva de tiquetes aéreos de forma eficiente, intuitiva y segura.
 
