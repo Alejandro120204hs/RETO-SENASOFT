@@ -35,7 +35,7 @@
             </select>
         </div>
 
-        <a href="recuperarclave.php">Recuperar Contraseña</a>
+       
         <button type="submit" class="btn btn-primary">Ingresar</button>
     </form>
     </div>

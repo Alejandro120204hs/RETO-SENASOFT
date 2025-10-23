@@ -1,4 +1,11 @@
 <?php
+ use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+
+    // Ruta absoluta desde models/ hacia PHPMailer/
+    require_once __DIR__ . '/../PHPMailer/Exception.php';
+    require_once __DIR__ . '/../PHPMailer/PHPMailer.php';
+    require_once __DIR__ . '/../PHPMailer/SMTP.php';
 
     class Vuelo{
 
@@ -15,7 +22,7 @@
             $resultado -> execute();
 
             echo"<script>alert('Modelo registrado con exito')</script>";
-            echo"<script>location.href='../views/admin/adminDashboard.php'</script>";
+            echo"<script>location.href='../views/admin/adminDashboardRegistrarModelo.php'</script>";
         }
 
         public function mostrarModelos(){
@@ -81,7 +88,7 @@
 
 
             echo"<script>alert('Avion registrado con exito')</script>";
-            echo"<script>location.href='../views/admin/adminDashboard.php'</script>";
+            echo"<script>location.href='../views/admin/adminDashboardRegistrarAvion.php'</script>";
         }
 
         public function mostrarAviones(){
@@ -262,8 +269,130 @@
         $resultadoAsiento->execute();
     }
 
-     echo"<script>alert('Vuelo registrado con exito')</script>";
-echo"<script>location.href='../views/cliente/clienteDashboard.php'</script>";
+    // ==========================
+    // ENVIAR CORREO DE CONFIRMACIÓN
+    // ==========================
+    $mail = new PHPMailer(true);
+
+    try {
+        //Server settings
+        $mail->SMTPDebug = 2; // Cambia a 2 para ver errores detallados
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'soportesenasoft@gmail.com';  // ⚠️ CAMBIA ESTO
+        $mail->Password   = 'puhhcmfyhekhzlta';   // ⚠️ CAMBIA ESTO (contraseña de aplicación)
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port       = 465;
+        $mail->CharSet    = 'UTF-8';
+
+        //Recipients
+        $mail->setFrom('soportesemasoft@gmail.com', 'Sistema de Reservas de Vuelos');  // ⚠️ CAMBIA ESTO
+        $mail->addAddress($correo_pagador, $nombre_pagador);
+
+        //Content
+        $mail->isHTML(true);
+        $mail->Subject = 'Confirmación de Reserva - Código: ' . $codigo_reserva;
+        $mail->Body    = '
+            <!DOCTYPE html>
+            <html lang="es">
+            <head>
+                <meta charset="UTF-8">
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        background-color: #f4f4f4;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    .container {
+                        max-width: 600px;
+                        margin: 30px auto;
+                        background-color: #fff;
+                        border-radius: 8px;
+                        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                        overflow: hidden;
+                    }
+                    header {
+                        background-color: #0066cc;
+                        color: #fff;
+                        text-align: center;
+                        padding: 20px;
+                    }
+                    header h1 {
+                        margin: 0;
+                        font-size: 24px;
+                    }
+                    main {
+                        padding: 30px;
+                    }
+                    main h2 {
+                        color: #0066cc;
+                        font-size: 20px;
+                        margin-bottom: 15px;
+                    }
+                    .info-box {
+                        background-color: #f8f9fa;
+                        border-left: 4px solid #0066cc;
+                        padding: 15px;
+                        margin: 15px 0;
+                    }
+                    .info-box p {
+                        margin: 8px 0;
+                        font-size: 14px;
+                    }
+                    footer {
+                        background-color: #333;
+                        color: #fff;
+                        text-align: center;
+                        padding: 15px;
+                        font-size: 12px;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <header>
+                        <h1>✈️ Confirmación de Reserva</h1>
+                    </header>
+                    <main>
+                        <h2>¡Reserva Exitosa!</h2>
+                        <p>Estimado/a <strong>' . htmlspecialchars($nombre_pagador) . '</strong>,</p>
+                        <p>Su reserva ha sido registrada exitosamente.</p>
+                        
+                        <div class="info-box">
+                            <p><strong>📋 Código de Reserva:</strong> ' . htmlspecialchars($codigo_reserva) . '</p>
+                            <p><strong>📅 Fecha de Reserva:</strong> ' . date('d/m/Y') . '</p>
+                            <p><strong>💰 Valor Total:</strong> $' . number_format($valor_total, 2) . '</p>
+                            <p><strong>👥 Número de Pasajeros:</strong> ' . count($primer_apellido) . '</p>
+                        </div>
+                        
+                        <p>Le recordamos que su reserva está en estado <strong>PENDIENTE</strong> hasta completar el proceso de pago.</p>
+                        <p>Guarde este código de reserva para futuras consultas.</p>
+                    </main>
+                    <footer>
+                        <p>© ' . date('Y') . ' Sistema de Reservas de Vuelos | Todos los derechos reservados</p>
+                    </footer>
+                </div>
+            </body>
+            </html>
+        ';
+
+        $mail->send();
+        
+        // MENSAJE DE ÉXITO Y REDIRECCIÓN
+        echo "<script>
+            alert('¡Reserva registrada con éxito!\\nCódigo: $codigo_reserva\\nSe ha enviado un correo de confirmación a: $correo_pagador');
+            window.location.href = '../views/cliente/clienteDashboard.php';
+        </script>";
+        
+    } catch (Exception $e) {
+        // SI FALLA EL CORREO, IGUAL LA RESERVA SE GUARDÓ
+        echo "<script>
+            alert('Reserva creada exitosamente.\\nCódigo: $codigo_reserva\\n\\nNota: No se pudo enviar el correo de confirmación.\\nError: {$mail->ErrorInfo}');
+            window.location.href = '../views/cliente/clienteDashboard.php';
+        </script>";
+    }
 }
 
 

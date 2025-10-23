@@ -1,7 +1,14 @@
 <?php
+ use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
 
+    // Ajusta la ruta según dónde esté PHPMailer
+    // Si está en la raíz del proyecto:
+    require __DIR__ . '/../PHPMailer/Exception.php';
+    require __DIR__ . '/../PHPMailer/PHPMailer.php';
+    require __DIR__ . '/../PHPMailer/SMTP.php';
     // SE CREA LA CLASE 
-    class usuario{
+    class Usuario{
         // CREAMOS LAS FUNCIONES PUBLICAS
         public function insertarUsuario($nombres,$correo,$clave){
              // INSTANCEAMOS LA CONEXION
@@ -75,10 +82,12 @@
             $resultdo -> execute();
             $f = $resultdo -> fetch();
             if($f){
+                $_SESSION['autenticado']='si';
+                $_SESSION['rol']='Administrador';
 
                 if($clave==$f['password']){
                     echo"<script>alert('Bienvenid@ adminstrad@r ".$f['nombres']."')</script>";
-                    echo"<script>location.href='../views/admin/adminDashboard.php'</script>";
+                    echo"<script>location.href='../views/admin/adminDashboardRegistrarVuelo.php'</script>";
                 }else{
                     echo"<script>alert('Contraseña incorrecta')</script>";
                     echo"<script>location.href='../views/extras/login.php'</script>";
@@ -87,6 +96,10 @@
                 echo"<script>alert('Usuario no encontrado, porfavor ingrese un correo valido')</script>";
                 echo"<script>location.href='../views/extras/login.php'</script>";
             }
+        }
+
+        public function recuperarClave($identificacion,$email){
+            
         }
     }
 

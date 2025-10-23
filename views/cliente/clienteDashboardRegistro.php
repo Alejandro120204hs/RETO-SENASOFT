@@ -43,7 +43,7 @@
               <h2>Alejandro Hernandez</h2>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="../../controllers/cerrarSesion.php">
                 <img src="../../public/assets/img/boton-eliminar.png" alt="" class="cerrar-sesion">
               </a>
             </li>
@@ -84,7 +84,8 @@
       <form action="../../controllers/inscribirVuelo.php" method="POST">
         <input type="hidden" name="id_vuelo" value="<?php echo $id_vuelo; ?>">
         <input type="hidden" name="precio_vuelo" id="precioVuelo" value="<?php echo isset($precio_vuelo) ? $precio_vuelo : ''; ?>">
-  <input type="hidden" name="precio_vuelo" id="precio_vuelo" value="">
+      <input type="hidden" name="precio_vuelo" id="precio_vuelo" value="">
+      
 
 
           <div class="tab-content p-4">
@@ -491,6 +492,191 @@
 
 
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Objeto para rastrear qué pasajero tiene qué asiento
+  const asientosSeleccionados = new Map();
+
+  // Función para obtener todos los selects de asientos (incluye los nuevos)
+  function obtenerTodosLosSelects() {
+    return document.querySelectorAll("select[name='asientos[]']");
+  }
+
+  // Función para actualizar el estado visual de todos los asientos
+  function actualizarEstadoAsientos() {
+    const selects = obtenerTodosLosSelects();
+    
+    selects.forEach(selectActual => {
+      const opciones = selectActual.querySelectorAll('option');
+      
+      opciones.forEach(option => {
+        // Ignorar la opción "Seleccione un asiento"
+        if (!option.value || option.value === '') return;
+        
+        // Verificar si está ocupado en la BD (viene con "disabled" del PHP)
+        const ocupadoDB = option.hasAttribute('disabled') && 
+                         option.textContent.includes('Ocupado');
+        
+        // Verificar si fue seleccionado por otro pasajero
+        const seleccionadoPorOtro = Array.from(asientosSeleccionados.values())
+          .includes(option.value) && selectActual.value !== option.value;
+        
+        // Restaurar el texto original si es necesario
+        if (!ocupadoDB && !seleccionadoPorOtro) {
+          option.disabled = false;
+          option.textContent = option.textContent
+            .replace(' 🔒 (Seleccionado por otro pasajero)', '')
+            .trim();
+        }
+        
+        // Marcar como seleccionado por otro pasajero
+        if (seleccionadoPorOtro && !ocupadoDB) {
+          option.disabled = true;
+          if (!option.textContent.includes('🔒')) {
+            option.textContent += ' 🔒 (Seleccionado por otro pasajero)';
+          }
+        }
+      });
+    });
+  }
+
+  // Función para agregar listeners a un select específico
+  function agregarListenersASelect(select, indice) {
+    // Remover listeners previos (si existen)
+    const nuevoSelect = select.cloneNode(true);
+    select.parentNode.replaceChild(nuevoSelect, select);
+    
+    nuevoSelect.addEventListener('change', function() {
+      const valorAnterior = asientosSeleccionados.get(indice);
+      
+      // Remover el valor anterior
+      if (valorAnterior) {
+        asientosSeleccionados.delete(indice);
+      }
+      
+      // Agregar el nuevo valor si es válido
+      if (this.value && this.value !== '') {
+        const opcionSeleccionada = this.options[this.selectedIndex];
+        
+        // Verificar si el asiento ya fue seleccionado por otro pasajero
+        const yaSeleccionado = Array.from(asientosSeleccionados.entries())
+          .some(([key, value]) => key !== indice && value === this.value);
+        
+        if (yaSeleccionado) {
+          alert(`❌ El asiento ${opcionSeleccionada.textContent.split('✅')[0].trim()} ya fue seleccionado por otro pasajero. Por favor, elija otro asiento.`);
+          this.value = '';
+          return;
+        }
+        
+        // Verificar si está ocupado en la BD
+        if (opcionSeleccionada.disabled && opcionSeleccionada.textContent.includes('Ocupado')) {
+          alert('❌ Este asiento ya está ocupado. Por favor, seleccione otro.');
+          this.value = '';
+          return;
+        }
+        
+        asientosSeleccionados.set(indice, this.value);
+      }
+      
+      actualizarEstadoAsientos();
+    });
+    
+    // Prevenir clicks en opciones deshabilitadas
+    nuevoSelect.addEventListener('mousedown', function(e) {
+      const selectedOption = this.options[this.selectedIndex];
+      if (selectedOption && selectedOption.disabled && selectedOption.value !== '') {
+        e.preventDefault();
+        alert('❌ Este asiento no está disponible. Por favor, seleccione otro.');
+      }
+    });
+  }
+
+  // Función para inicializar todos los selects
+  function inicializarSelects() {
+    const selects = obtenerTodosLosSelects();
+    selects.forEach((select, index) => {
+      agregarListenersASelect(select, index);
+    });
+    actualizarEstadoAsientos();
+  }
+
+  // Inicializar al cargar la página
+  inicializarSelects();
+
+  // Observar cuando se agregan nuevos selects (nuevos pasajeros)
+  const observer = new MutationObserver(function(mutations) {
+    let hayNuevosSelects = false;
+    
+    mutations.forEach(function(mutation) {
+      mutation.addedNodes.forEach(node => {
+        if (node.classList && node.classList.contains('seat-select-item')) {
+          hayNuevosSelects = true;
+        }
+      });
+    });
+    
+    if (hayNuevosSelects) {
+      // Re-inicializar todos los selects
+      setTimeout(() => {
+        inicializarSelects();
+      }, 100);
+    }
+  });
+
+  // Observar el contenedor de asientos
+  const seatContainer = document.getElementById('seat-selection-container');
+  if (seatContainer) {
+    observer.observe(seatContainer, { 
+      childList: true, 
+      subtree: true 
+    });
+  }
+
+  // Validación final antes de enviar el formulario
+  const form = document.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      const selects = obtenerTodosLosSelects();
+      const asientosElegidos = new Set();
+      let esValido = true;
+
+      selects.forEach((select, index) => {
+        const valor = select.value;
+        
+        // Verificar que todos tengan un asiento seleccionado
+        if (!valor || valor === '') {
+          alert(`❌ Por favor, seleccione un asiento para el Pasajero ${index + 1}`);
+          esValido = false;
+          return;
+        }
+        
+        // Verificar duplicados
+        if (asientosElegidos.has(valor)) {
+          const textoAsiento = select.options[select.selectedIndex].textContent;
+          alert(`❌ El asiento "${textoAsiento.split('✅')[0].trim()}" está duplicado. Cada pasajero debe tener un asiento diferente.`);
+          esValido = false;
+          return;
+        }
+        
+        asientosElegidos.add(valor);
+      });
+
+      if (!esValido) {
+        e.preventDefault();
+        return false;
+      }
+      
+      // Verificar términos y condiciones
+      const termsCheckbox = document.getElementById('termsConditions');
+      if (termsCheckbox && !termsCheckbox.checked) {
+        alert('❌ Debe aceptar los términos y condiciones para continuar.');
+        e.preventDefault();
+        return false;
+      }
+    });
+  }
+});
+</script>
 
 
 

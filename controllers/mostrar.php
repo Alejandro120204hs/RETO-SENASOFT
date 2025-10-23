@@ -1,6 +1,6 @@
 <?php
 
-function cargarModelos(){
+    function cargarModelos(){
         // CREAMOS EL OBJETO PARA ALMACENAR LOS DATOS
         $objetoVuelo = new Vuelo();
         $datos = $objetoVuelo ->mostrarModelos();
@@ -87,19 +87,17 @@ function cargarModelos(){
         
     }
 
-    function cargarVuelosRegreso($origen,$destino,$fecha_regreso){
-        // CREAMOS EL OBJETO PARA ALMACENAR LOS DATOS
-        $objetoVuelo = new Vuelo();
-        $datos = $objetoVuelo -> mostrarVuelosRegreso($origen, $destino, $fecha_regreso);
+   function cargarVuelosRegreso($origen,$destino,$fecha_regreso){
+    // CREAMOS EL OBJETO PARA ALMACENAR LOS DATOS
+    $objetoVuelo = new Vuelo();
+    $datos = $objetoVuelo->mostrarVuelosRegreso($origen, $destino, $fecha_regreso);
 
-        
-        if(empty($datos)){
-            echo"<h2>No hay Vuelos registrados</h2>";
-        }else{
-            foreach($datos as $f){
-                echo'
-                
-                 <div class="card flight-card p-3 d-flex flex-row align-items-center justify-content-between flex-wrap">
+    if(empty($datos)){
+        echo "<h2>No hay Vuelos registrados</h2>";
+    } else {
+        foreach($datos as $f){
+            echo '
+                <div class="card flight-card p-3 d-flex flex-row align-items-center justify-content-between flex-wrap">
                     <div class="d-flex align-items-center gap-3">
                         <img src="../../public/assets/img/avion.png" alt="avión" class="icono-avion">
                         <div>
@@ -120,22 +118,62 @@ function cargarModelos(){
                         <small class="text-muted">'.$f['codigo_vuelo'].'</small>
                     </div>
                     <div class="text-center">
-                        
                         <small class="text-muted">'.$f['destino'].'</small>
                     </div>
                     <div class="text-center">
                         <h5><span>$'.$f['precio'].'</span> COP</h5>
-                        <a href="clienteDashboardRegistro.php" class="seleccionar">Seleccionar</a>
+                        <a href="clienteDashboardRegistro.php?id_vuelo='.$f['id'].'" class="seleccionar">Seleccionar</a>
                     </div>
                 </div>
-                
-                
-                ';
-            }
+            ';
         }
-
-        
     }
+}
+
+
+   // En tu archivo controllers/mostrar.php o donde tengas esta función
+function cargarAsientosPorVuelo($id_vuelo){
+    $objetoVuelo = new Vuelo();
+    $asientos = $objetoVuelo->mostrarAsientos($id_vuelo);
+    
+    foreach($asientos as $asiento){
+        // Si el asiento está ocupado, lo deshabilitamos y marcamos visualmente
+        if($asiento['estado'] == 'ocupado'){
+            echo "<option value='".$asiento['id']."' disabled style='color: #999; text-decoration: line-through;'>";
+            echo $asiento['numero_asiento']." ❌ (Ocupado)";
+            echo "</option>";
+        } else {
+            echo "<option value='".$asiento['id']."'>";
+            echo $asiento['numero_asiento']." ✅ (Disponible)";
+            echo "</option>";
+        }
+    }
+}
+
+
+    function mostrarPrecioVuelo($id_vuelo){
+    $objetoVuelo = new Vuelo();
+    $datos = $objetoVuelo->mostrarPrecio($id_vuelo);
+
+    if(empty($datos)){
+        echo "<h2>No se encontró el precio del vuelo</h2>";
+    } else {
+        echo '
+        <div class="summary-row">
+            <span>Precio por pasajero:</span>
+            <span id="precioUnitarioTexto">$'.number_format($datos['precio'], 0, ',', '.').' COP</span>
+        </div>
+        <input type="hidden" id="precioUnitario" value="'.$datos['precio'].'">
+        
+        
+        ';
+    }
+}
+
+
+
+    
+
 
     
 

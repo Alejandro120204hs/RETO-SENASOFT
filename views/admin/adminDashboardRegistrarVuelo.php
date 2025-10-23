@@ -2,6 +2,7 @@
   require_once("../../models/conexion.php");
   require_once("../../models/vuelo.php");
   require_once("../../controllers/mostrar.php");
+  require_once("../../controllers/sesionAdministrador.php");
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +31,7 @@
         <ul class="navbar-nav mx-auto gap-3">
           <li class="nav-item"><a class="nav-link enlace-nav" href="adminDashboardRegistrarModelo.php">Modelos</a></li>
           <li class="nav-item"><a class="nav-link enlace-nav" href="adminDashboardRegistrarAvion.php">Aviones</a></li>
-          <li class="nav-item"><a class="nav-link enlace-nav active" href="adminDashboard.php">Vuelos</a></li>
+          <li class="nav-item"><a class="nav-link enlace-nav active" href="adminDashboardRegistrarVuelo.php">Vuelos</a></li>
         </ul>
 
         <ul class="navbar-nav ms-auto align-items-center gap-2">
@@ -38,7 +39,7 @@
             <span class="usuario-nombre">Alejandro Hernandez</span>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><img src="../../public/assets/img/boton-eliminar.png" alt="Cerrar sesión" class="cerrar-sesion" /></a>
+            <a class="nav-link" href="../../controllers/cerrarSesion.php"><img src="../../public/assets/img/boton-eliminar.png" alt="Cerrar sesión" class="cerrar-sesion" /></a>
           </li>
         </ul>
       </div>
