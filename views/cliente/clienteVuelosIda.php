@@ -1,3 +1,11 @@
+<?php
+
+    require_once("../../models/conexion.php");
+    require_once("../../models/vuelo.php");
+    require_once("../../controllers/mostrar.php")
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,45 +54,19 @@
 
         <div id="hero">
             <div class="container my-4">
-                <div class="card flight-card p-3 d-flex flex-row align-items-center justify-content-between flex-wrap">
-                  
-                    <!-- Info de aerolínea y avión -->
-                    <div class="d-flex align-items-center gap-3">
-                        <img src="../../public/assets/img/avion.png" alt="avión" class="icono-avion">
-                        <div>
-                            <h6 class="mb-1 fw-bold">Vuelo FL001</h6>
-                            <small class="text-muted">Avión: A320</small>
-                            <h2 class="asiento">40 asientos disponibles</h2>
-                        </div>
-                    </div>
+                
 
-                    <!-- Origen -->
-                    <div class="text-center">
-                        <h4 class="fw-bold mb-0">08:00</h4>
-                        <small class="text-muted">Bogotá</small>
-                    </div>
+                <?php
+                    $origen = $_GET['origen'] ?? '';
+                    $destino = $_GET['destino'] ?? '';
+                    $fecha_salida = $_GET['fecha_salida'] ?? '';
 
-                    <!-- Fecha y código -->
-                    <div class="text-center mx-3">
-                        <div class="d-flex flex-column align-items-center">
-                            <span class="text-muted small">2025-10-25</span>
-                            <img src="../../public/assets/img/despegue-del-avion.png" alt="avión" style="width: 36px;">
-                        </div>
-                        <small class="text-muted">FL001</small>
-                    </div>
-
-                    <!-- Destino -->
-                    <div class="text-center">
-                        <h4 class="fw-bold mb-0">09:15</h4>
-                        <small class="text-muted">Medellín</small>
-                    </div>
-
-                    <!-- Precio + botón -->
-                    <div class="text-center">
-                        <h5><span>$185.000</span> COP</h5>
-                        <a href="clienteDashboardRegistro.php" class="seleccionar">Seleccionar</a>
-                    </div>
-                </div>
+                    if ($origen && $destino && $fecha_salida) {
+                        cargarVuelos($origen, $destino, $fecha_salida);
+                    } else {
+                        echo "<h2>No se recibieron los datos del vuelo correctamente.</h2>";
+                    }
+                ?>
             </div>
         </div>
     </header>

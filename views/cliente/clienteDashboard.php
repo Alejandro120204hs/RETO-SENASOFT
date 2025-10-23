@@ -58,26 +58,27 @@
 
     <!-- FORMULARIO IDA Y REGRESO -->
     <div class="container my-4" id="formIdaRegreso">
-      <form>
+      <form action="../../controllers/buscarVuelosIdaRegreso.php" method="POST">
+
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="origen1" class="form-label">Origen</label>
-            <input type="text" class="form-control" id="origen1" list="listaCiudades" placeholder="Escribe una ciudad">
+            <input type="text" class="form-control" id="origen1" list="listaCiudades" placeholder="Escribe una ciudad" name="origen">
           </div>
           <div class="col-md-6 mb-3">
             <label for="destino1" class="form-label">Destino</label>
-            <input type="text" class="form-control" id="destino1" list="listaCiudades" placeholder="Escribe una ciudad">
+            <input type="text" class="form-control" id="destino1" list="listaCiudades" placeholder="Escribe una ciudad" name="destino">
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-4 mb-3">
             <label class="form-label">Fecha de salida</label>
-            <input type="date" class="form-control fecha" id="salidaIdaRegreso">
+            <input type="date" class="form-control fecha" id="salidaIdaRegreso" name="fecha_salida">
           </div>
           <div class="col-md-4 mb-3">
             <label class="form-label">Fecha de regreso</label>
-            <input type="date" class="form-control fecha" id="regresoIdaRegreso">
+            <input type="date" class="form-control fecha" id="regresoIdaRegreso" name="fecha_regreso">
           </div>
           <div class="col-md-4 mb-3">
             <label class="form-label">Pasajeros (máximo 5)</label>
@@ -92,28 +93,28 @@
           </div>
         </div>
 
-        <a href="clienteVuelosIdaRegreso.php" class="btn btn-primary">Buscar vuelos</a>
+        <button type="submit">Buscar Vuelos</button>
       </form>
     </div>
 
     <!-- FORMULARIO SOLO IDA -->
     <div class="container my-4" id="formSoloIda" style="display: none;">
-      <form>
+      <form action="../../controllers/buscarVuelosIda.php" method="POST">
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="origen2" class="form-label">Origen</label>
-            <input type="text" class="form-control" id="origen2" list="listaCiudades" placeholder="Escribe una ciudad">
+            <input type="text" class="form-control" id="origen2" list="listaCiudades" placeholder="Escribe una ciudad" name="origen">
           </div>
           <div class="col-md-6 mb-3">
             <label for="destino2" class="form-label">Destino</label>
-            <input type="text" class="form-control" id="destino2" list="listaCiudades" placeholder="Escribe una ciudad">
+            <input type="text" class="form-control" id="destino2" list="listaCiudades" placeholder="Escribe una ciudad" name="destino">
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-6 mb-3">
             <label class="form-label">Fecha de salida</label>
-            <input type="date" class="form-control fecha" id="salidaSoloIda">
+            <input type="date" class="form-control fecha" id="salidaSoloIda" name="fecha_salida">
           </div>
           <div class="col-md-6 mb-3">
             <label class="form-label">Pasajeros (máximo 5)</label>
@@ -128,7 +129,7 @@
           </div>
         </div>
 
-        <a href="clienteVuelosIda.php" class="btn btn-primary">Buscar vuelos</a>
+        <button type="submit">Buscar Vuelos</button>
       </form>
     </div>
 

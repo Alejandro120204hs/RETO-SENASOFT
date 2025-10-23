@@ -1,78 +1,120 @@
-  /* === IMPORTAR FUENTE MODERNA === */
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* === IMPORTAR FUENTE MODERNA === */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-  * {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  }
+* {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  body {
-    background: linear-gradient(to bottom, #fefefe 0%, #faf8ff 100%);
-    min-height: 100vh;
-  }
+body {
+  background: linear-gradient(to bottom, #fefefe 0%, #faf8ff 100%);
+  min-height: 100vh;
+}
 
-  /* === NAVBAR GENERAL === */
-  .navbar {
-    position: relative;
-    padding: 20px 40px;
-    background-color: #ffffff;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
-    border-bottom: 1px solid #f5f3ff;
-  }
+/* === NAVBAR GENERAL === */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid #f5f3ff;
+}
 
-  /* LOGO IZQUIERDA */
-  .navbar-brand img {
-    height: 42px;
-    transition: transform 0.3s ease;
-  }
+/* === LOGO IZQUIERDA === */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-  .navbar-brand img:hover {
-    transform: scale(1.03);
-  }
+.navbar-brand img {
+  height: 38px;
+  transition: transform 0.3s ease;
+}
 
-  /* AVIÓN CENTRADO */
-  .navbar .avion {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 34px;
-    margin-bottom: 10px;
-    margin-top: -16px;
-    filter: drop-shadow(0 2px 6px rgba(124, 58, 237, 0.12));
-  }
+.navbar-brand img:hover {
+  transform: scale(1.05);
+}
 
-  /* LISTA NAVBAR */
-  .navbar-nav {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-    margin-right: 10px;
-    gap: 20px;
-  }
+/* === NAV LINKS CENTRADOS === */
+.navbar-nav.mx-auto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 28px;
+}
 
-  /* NOMBRE DE USUARIO */
-  .navbar-nav h2 {
-    font-size: 15px;
-    margin: 0;
-    color: #2d3748;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-  }
+/* === ENLACES NAV === */
+.enlace-nav {
+  font-weight: 600;
+  color: #4b4b4b !important;
+  transition: all 0.3s ease;
+  position: relative;
+  font-size: 15px;
+}
 
-  /* ICONO CERRAR SESIÓN */
-  .cerrar-sesion {
-    height: 20px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    opacity: 0.65;
-  }
+/* Subrayado animado */
+.enlace-nav::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+  bottom: -4px;
+  left: 0;
+  transition: width 0.3s ease;
+}
 
-  .cerrar-sesion:hover {
-    transform: scale(1.1);
-    opacity: 1;
-  }
+.enlace-nav:hover::after {
+  width: 100%;
+}
 
-/* Tabla de vuelos estilo dashboard morado */
+.enlace-nav:hover {
+  color: #7C3AED !important;
+}
+
+/* Estado activo */
+.enlace-nav.active {
+  color: #7C3AED !important;
+}
+
+.enlace-nav.active::after {
+  width: 100%;
+}
+
+/* === USUARIO DERECHA === */
+.usuario {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.usuario h2 {
+  font-size: 15px;
+  color: #2d3748;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* === ICONO CERRAR SESIÓN === */
+.cerrar-sesion {
+  height: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.65;
+}
+
+.cerrar-sesion:hover {
+  transform: rotate(90deg) scale(1.1);
+  opacity: 1;
+}
+
+/* === TABLA DE VUELOS === */
 .tabla-vuelos {
   background-color: #fafafa;
   border-radius: 12px;
@@ -116,13 +158,12 @@
   text-align: center;
 }
 
-/* Responsive - se mantiene scroll horizontal */
+/* Scroll horizontal responsive */
 .table-responsive {
   border-radius: 12px;
   overflow-x: auto;
 }
 
-/* Ajustes para que el scroll no afecte diseño */
 .table-responsive::-webkit-scrollbar {
   height: 8px;
 }
@@ -137,7 +178,7 @@
   border-radius: 12px;
 }
 
-/* Título dashboard */
+/* === TÍTULO DASHBOARD === */
 .titulo-dashboard {
   font-weight: 700;
   color: #5c4a96;
@@ -145,20 +186,21 @@
   font-size: 1.8rem;
 }
 
-/* Para el texto de precios: color morado oscuro */
+/* === COLOR DE PRECIOS === */
 .tabla-vuelos tbody td:nth-child(8) {
   color: #6d28d9;
   font-weight: 600;
 }
 
-/* Pasajeros con color algo más tenue */
+/* === PASAJEROS TENUES === */
 .tabla-vuelos tbody td:last-child {
   color: #7c3aedcc;
   font-weight: 600;
 }
 
-/* Botón/enlace "Registrar Vuelos" */
-a.registrar {
+/* === BOTÓN REGISTRAR VUELOS === */
+a.registrar,
+button.registro {
   display: inline-block;
   margin-top: 20px;
   padding: 12px 24px;
@@ -170,35 +212,126 @@ a.registrar {
   transition: all 0.3s ease;
   box-shadow: 0 4px 10px rgba(124, 58, 237, 0.25);
   text-align: center;
-  margin-left: 450px;
+  border: none;
 }
 
-/* Hover para efecto visual */
-a.registrar:hover {
-  background: linear-gradient(135deg, #6D28D9, #7C3AED);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(124, 58, 237, 0.35);
-}
-
-
-
-button.registro{
-    display: inline-block;
-  margin-top: 20px;
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #7C3AED, #8B5CF6);
-  color: white;
-  font-weight: 600;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(124, 58, 237, 0.25);
-  text-align: center;
-  border: none
-}
-
+a.registrar:hover,
 button.registro:hover {
   background: linear-gradient(135deg, #6D28D9, #7C3AED);
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(124, 58, 237, 0.35);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 991px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-nav.mx-auto {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .usuario {
+    margin-top: 10px;
+    align-self: flex-end;
+  }
+}
+
+/* === FORMULARIO DE REGISTRO DE MODELOS === */
+.form-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.15);
+  padding: 40px;
+  max-width: 600px;
+  border: 1px solid #ece7ff;
+}
+
+.titulo-form {
+  color: #5c4a96;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: 1.6rem;
+}
+
+/* Inputs del formulario */
+.input-form {
+  border: 1px solid #dcd5ff;
+  border-radius: 8px;
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+.input-form:focus {
+  border-color: #7C3AED;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+  outline: none;
+}
+
+/* Botón principal del formulario */
+.btn-registrar {
+  background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 26px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+  transition: all 0.3s ease;
+}
+
+.btn-registrar:hover {
+  background: linear-gradient(135deg, #6D28D9, #7C3AED);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
+}
+
+/* Nombre del admin (si no lo tienes ya) */
+.nombre-admin {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .form-card {
+    padding: 30px 20px;
+  }
+
+  .titulo-form {
+    font-size: 1.4rem;
+  }
+}
+
+/* === FORMULARIO REGISTRO AVIONES === */
+
+/* Ajuste para selects (mantiene coherencia con inputs) */
+.input-form,
+.input-form:focus {
+  appearance: none;
+  background-color: #fff;
+}
+
+/* Select con icono de flecha más estilizado */
+.input-form.form-select {
+  background-image: linear-gradient(135deg, #7C3AED, #8B5CF6);
+  background-clip: text;
+  -webkit-text-fill-color: #333;
+}
+
+/* Ajuste visual de label */
+.form-label {
+  font-weight: 600;
+  color: #4b4b4b;
+  margin-bottom: 6px;
+}
+
+/* Centrar tarjeta del formulario */
+.form-card {
+  margin-top: 40px;
 }

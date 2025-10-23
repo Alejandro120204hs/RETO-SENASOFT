@@ -1,3 +1,12 @@
+<?php
+
+    require_once("../../models/conexion.php");
+    require_once("../../models/vuelo.php");
+    require_once("../../controllers/mostrar.php")
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,7 +60,7 @@
         <!-- Contenido Tab Ida -->
         <div id="tab-ida" class="tab-content active">
             <div class="container my-4">
-                <div class="card flight-card p-3 d-flex flex-row align-items-center justify-content-between flex-wrap">
+                <!-- <div class="card flight-card p-3 d-flex flex-row align-items-center justify-content-between flex-wrap">
                     <div class="d-flex align-items-center gap-3">
                         <img src="../../public/assets/img/avion.png" alt="avión" class="icono-avion">
                         <div>
@@ -79,7 +88,19 @@
                         <h5><span>$185.000</span> COP</h5>
                         <a href="clienteDashboardRegistro.php" class="seleccionar">Seleccionar</a>
                     </div>
-                </div>
+                </div> -->
+                 <?php
+                    $origen = $_GET['origen'] ?? '';
+                    $destino = $_GET['destino'] ?? '';
+                    $fecha_salida = $_GET['fecha_salida'] ?? '';
+                    $fecha_regreso = $_GET['fecha_regreso'] ?? '';
+
+                    if ($origen && $destino && $fecha_salida) {
+                        cargarVuelos($origen, $destino, $fecha_salida);
+                    } else {
+                        echo "<h2>No se recibieron los datos del vuelo correctamente.</h2>";
+                    }
+                ?>
             </div>
 
            
@@ -88,7 +109,7 @@
         <!-- Contenido Tab Vuelta -->
         <div id="tab-vuelta" class="tab-content">
             <div class="container my-4">
-                <div class="card flight-card p-3 d-flex flex-row align-items-center justify-content-between flex-wrap">
+                <!-- <div class="card flight-card p-3 d-flex flex-row align-items-center justify-content-between flex-wrap">
                     <div class="d-flex align-items-center gap-3">
                         <img src="../../public/assets/img/avion.png" alt="avión" class="icono-avion">
                         <div>
@@ -116,7 +137,20 @@
                         <h5><span>$195.000</span> COP</h5>
                         <a href="clienteDashboardRegistro.php" class="seleccionar">Seleccionar</a>
                     </div>
-                </div>
+                </div> -->
+
+               <?php
+                    $origen = $_GET['origen'] ?? '';
+                    $destino = $_GET['destino'] ?? '';
+                    $fecha_regreso = $_GET['fecha_regreso'] ?? '';
+
+                    if ($origen && $destino && $fecha_regreso) {
+                        cargarVuelosRegreso($origen, $destino, $fecha_regreso);
+                    } else {
+                        echo "<h2>No se recibieron los datos del vuelo correctamente.</h2>";
+                    }
+                   ?>
+               
             </div>
 
            
