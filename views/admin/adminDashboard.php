@@ -9,30 +9,37 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow-sm py-3">
       <div class="container-fluid">
-        <a class="navbar-brand" href="adminDashboard.php">
-          <img src="../../public/assets/img/logo-final-sky.png" alt="Logo" />
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <a class="navbar-brand d-flex align-items-center" href="adminDashboard.php">
+        <img src="../../public/assets/img/logo-final-sky.png" alt="Logo" class="logo-navbar me-2" />
+       
+      </a>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto align-items-center">
-            <li class="nav-item">
-              <img src="../../public/assets/img/avion.png" alt="Avión" class="avion" />
-            </li>
-            <li class="nav-item">
-              <h2>Alejandro Hernandez</h2>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><img src="../../public/assets/img/boton-eliminar.png" alt="Cerrar sesión" class="cerrar-sesion" /></a>
-            </li>
-          </ul>
-        </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto gap-3">
+          <li class="nav-item"><a class="nav-link enlace-nav" href="adminDashboardRegistrarModelo.php">Modelos</a></li>
+          <li class="nav-item"><a class="nav-link enlace-nav" href="adminDashboardRegistrarAvion.php">Aviones</a></li>
+          <li class="nav-item"><a class="nav-link enlace-nav active" href="adminDashboard.php">Vuelos</a></li>
+        </ul>
+
+        <ul class="navbar-nav ms-auto align-items-center gap-2">
+          <li class="nav-item">
+            <span class="usuario-nombre">Alejandro Hernandez</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><img src="../../public/assets/img/boton-eliminar.png" alt="Cerrar sesión" class="cerrar-sesion" /></a>
+          </li>
+        </ul>
       </div>
-    </nav>
+    </div>
+  </nav>
+
+
 
   <div class="container my-5">
     <h2 class="titulo-dashboard text-center mb-4">Panel de Vuelos Registrados</h2>
@@ -80,7 +87,7 @@
         </tbody>
         
       </table>
-      <a href="adminsDashboardRegistrarVuelo.php" class="registrar">Registrar Vuelos</a>
+      <a href="adminDashboardRegistrarVuelo.php" class="registrar">Registrar Vuelos</a>
     </div>
   </div>
 
