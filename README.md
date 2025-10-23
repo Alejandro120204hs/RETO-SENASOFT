@@ -1,9 +1,37 @@
+======================================================
+SkyRoute — Sistema Web de Gestión de Tiquetes Aéreos
+======================================================
+
+SkyRoute es una aplicación web desarrollada bajo el modelo MVC con PHP puro y base de datos MySQL, diseñada para gestionar el proceso completo de compra y reserva de tiquetes aéreos de forma eficiente, intuitiva y segura.
+
+Este sistema fue creado como parte del reto de Desarrollo Libre — SENASoft 2025, con el objetivo de demostrar la implementación de buenas prácticas de ingeniería de software, control de versiones con GitFlow, y el diseño de una arquitectura escalable basada en tecnologías libres.
+
+SkyRoute permite tanto a usuarios pasajeros como a administradores interactuar en un entorno estructurado:
+
+Los pasajeros pueden consultar vuelos, realizar reservas, seleccionar asientos y simular pagos sin necesidad de registro obligatorio.
+
+Los administradores pueden gestionar vuelos, modelos de avión, asientos y controlar la disponibilidad en tiempo real.
+
+La interfaz está diseñada con un enfoque UX/UI profesional, utilizando Bootstrap y componentes responsivos, garantizando una experiencia moderna y accesible desde cualquier dispositivo.
+
+
+
+
+
+=====================
+ALCANCE DEL PROYECTO
+=====================
+
+Cubre:
+=======
+
 •	Gestión de pasajeros, vuelos, tipos de avión y generación de tiquetes.
 •	Control de disponibilidad de asientos.
 •	Simulación de pagos por parte del usuario.
 •	Acceso diferenciado para usuarios y administradores.
 
 No cubre:
+=========
 
 •	Integración con pasarelas de pago reales (se simulará el proceso).
 •	Módulos de quejas, reclamos o programas de fidelización.
@@ -30,20 +58,56 @@ ESTRUCTURA DEL REPOSITORIO
 ==============================
 
 
-|
-|
-|
-|
-|
-|
 
+Aquí tienes la estructura completa de tu proyecto en el formato solicitado:
 
-docs/ — todos los documentos finales (Diseño, Diccionario de Datos, diagramas).
-
-database/ — esquema.sql, datos_prueba.sql, modeloER.mwb (o .puml).
-|
-|-.gitignore,
-
+```
+RETO-SENASOFT
+||| controllers
+||| ||| iniciarSesion.php
+||| ||| registrarUsuario.php
+||| docs
+||| ||| DIAGRAMAS UML
+||| ||| IGNORE - CORE
+||| ||| PROTOTIPADO
+||| ||| ~$ACK TECNOLOGICO.docx
+||| ||| ~$ANALISIS DE REQUERIMI...
+||| ||| 1 ANALISIS DE REQUERIMIENTO...
+||| ||| DICCIONARIO DE DATOS.docx
+||| ||| DISEÑO DE LA SOLUCION.docx
+||| ||| ESPECIFICACION REPOSITORIO ...
+||| ||| STACK TECNOLOGICO.docx
+||| models
+||| ||| conexion.php
+||| ||| usuario.php
+||| public\assets
+||| ||| admin
+||| ||| ||| styles.css
+||| ||| cliente
+||| ||| ||| styles.css
+||| ||| ||| stylesVuelos.css
+||| ||| extras
+||| ||| ||| img
+||| ||| ||| styles.css
+||| ||| ||| stylesLogin.css
+||| ||| ||| img
+||| views
+||| ||| admin
+||| ||| ||| adminDashboard.php
+||| ||| ||| adminsDashboardRegistrarVuel...
+||| ||| cliente
+||| ||| ||| clienteDashboard.php
+||| ||| ||| clienteDashboardRegistro.php
+||| ||| ||| clienteVuelosIda.php
+||| ||| ||| clienteVuelosIdaRegreso.php
+||| ||| extras
+||| ||| ||| login.php
+||| ||| ||| recuperarclave.php
+||| ||| ||| registro.php
+||| .gitignore
+||| index.php
+||| README.md
+```
 ================================
 Requisitos previos (instalación)
 ================================
@@ -97,7 +161,9 @@ Configurar conexión
 
 Guarda los cambios.
 
-        Ejecutar el proyecto
+        Ejecutar el proyecto, es decir, la ruta que debe verificar 
+        desde git hub al clonar el repo 
+        es c:\xampp\htdocs\RETO-SENASOFT
 
         Inicia Apache y MySQL desde XAMPP.
 
