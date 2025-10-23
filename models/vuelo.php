@@ -147,6 +147,127 @@
                 return $f;
                 
             }
+
+            public function mostrarAsientos($id_vuelo){
+                // INSTANCEAMOS LA CONEXION
+                $objetoConexion = new Conexion();
+                $conexion = $objetoConexion -> get_conexion();
+
+                // DEFINIMOS EN UNA VARIABLE LA CONSULTA DE SQL SEGUN SEA EL CASO
+                $consultar = "SELECT asiento.* FROM asiento INNER JOIN avion ON asiento.id_avion=avion.id INNER JOIN vuelo ON vuelo.id_avion=avion.id WHERE vuelo.id=$id_vuelo";
+
+                // PREPARAMOS LA ACCION A EJEUCATR Y LA EJECUTAMOS
+                $resultado = $conexion -> prepare($consultar);
+                $resultado -> execute();
+                $f = $resultado -> fetchAll();
+                return $f;
+            }
+
+            public function mostrarPrecio($id_vuelo){
+                // INSTANCEAMOS LA CONEXION
+                $objetoConexion = new Conexion();
+                $conexion = $objetoConexion -> get_conexion();
+
+                // DEFINIMOS EN UNA VARIABLE LA CONSULTA DE SQL SEGUN SEA EL CASO
+                $consultar = "SELECT precio FROM vuelo WHERE id = $id_vuelo";
+
+                // PREPARAMOS LA ACCION A EJEUCATR Y LA EJECUTAMOS
+                $resultado = $conexion -> prepare($consultar);
+                $resultado -> execute();
+                $f = $resultado -> fetch();
+                return $f;
+            }
+            
+          public function insribirseVuelo(
+    $primer_apellido,
+    $segundo_apellido,
+    $nombres,
+    $fecha_nacimiento,
+    $genero,
+    $tipo_documento,
+    $documento,
+    $infante,
+    $telefono,
+    $correo,
+    $nombre_pagador,
+    $tipo_documento_pagador,
+    $documento_pagador,
+    $correo_pagador,
+    $telefono_pagador,
+    $asientos,
+    $id_vuelo,
+    $precio_vuelo // este ahora contendrá el TOTAL ya calculado en el formulario
+){
+    // INSTANCIAMOS LA CONEXIÓN 
+    $objetoConexion = new Conexion();
+    $conexion = $objetoConexion->get_conexion();
+
+    // ==========================
+    // INSERTAR PAGADOR
+    // ==========================
+    $insertarPagador = "INSERT INTO pagador (nombre, tipo_documento, numero_documento, correo, telefono)
+                        VALUES ('$nombre_pagador', '$tipo_documento_pagador', '$documento_pagador', '$correo_pagador', '$telefono_pagador')";
+    $resultadoPagador = $conexion->prepare($insertarPagador);
+    $resultadoPagador->execute();
+    $id_pagador = $conexion->lastInsertId();
+
+    // ==========================
+    // CREAR RESERVA
+    // ==========================
+    $codigo_reserva = 'RSV-' . rand(10000, 99999);
+    $fecha_reserva = date('Y-m-d');
+    $estado = 'pendiente';
+
+    // AQUÍ usamos directamente el total que viene del formulario
+    $valor_total = $precio_vuelo;
+
+    $insertarReserva = "INSERT INTO reserva (codigo_reserva, id_vuelo, fecha_reserva, valor_total, estado)
+                        VALUES ('$codigo_reserva', '$id_vuelo', '$fecha_reserva', '$valor_total', '$estado')";
+    $resultadoReserva = $conexion->prepare($insertarReserva);
+    $resultadoReserva->execute();
+    $id_reserva = $conexion->lastInsertId();
+
+    // ==========================
+    // INSERTAR PASAJEROS Y DETALLES
+    // ==========================
+    foreach ($primer_apellido as $i => $apellido1) {
+
+        $apellido2 = $segundo_apellido[$i];
+        $nombre = $nombres[$i];
+        $fecha = $fecha_nacimiento[$i];
+        $gen = $genero[$i];
+        $tipo_doc = $tipo_documento[$i];
+        $doc = $documento[$i];
+        $inf = $infante[$i];
+        $tel = $telefono[$i];
+        $seat = $asientos[$i];
+
+        // INSERTAR PASAJERO
+        $insertarPasajero = "INSERT INTO pasajero
+            (primer_apellido, segundo_apellido, nombres, fecha_nacimiento, genero, tipo_documento, numero_documento, infante, celular, correo)
+            VALUES ('$apellido1', '$apellido2', '$nombre', '$fecha', '$gen', '$tipo_doc', '$doc', '$inf', '$tel', '$correo')";
+        $resultadoPasajero = $conexion->prepare($insertarPasajero);
+        $resultadoPasajero->execute();
+        $id_pasajero = $conexion->lastInsertId();
+
+        // INSERTAR EN DETALLE DE RESERVA
+        $insertarDetalle = "INSERT INTO reserva_detalle (id_reserva, id_pasajero, id_asiento)
+                            VALUES ('$id_reserva', '$id_pasajero', '$seat')";
+        $resultadoDetalle = $conexion->prepare($insertarDetalle);
+        $resultadoDetalle->execute();
+
+        // ACTUALIZAR ESTADO DEL ASIENTO
+        $actualizarAsiento = "UPDATE asiento SET estado='ocupado' WHERE id='$seat'";
+        $resultadoAsiento = $conexion->prepare($actualizarAsiento);
+        $resultadoAsiento->execute();
     }
+
+     echo"<script>alert('Vuelo registrado con exito')</script>";
+echo"<script>location.href='../views/cliente/clienteDashboard.php'</script>";
+}
+
+
+    
+}
 
 ?>
