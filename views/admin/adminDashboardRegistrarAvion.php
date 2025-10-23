@@ -34,7 +34,7 @@
 
         <div class="d-flex align-items-center gap-2">
           <span class="nombre-admin">Alejandro Hernandez</span>
-          <a href="#"><img src="../../public/assets/img/boton-eliminar.png" alt="Cerrar sesión" class="cerrar-sesion"></a>
+          <a href="../../controllers/cerrarSesion.php"><img src="../../public/assets/img/boton-eliminar.png" alt="Cerrar sesión" class="cerrar-sesion"></a>
         </div>
       </div>
     </div>

@@ -43,7 +43,7 @@
               <h2>Alejandro Hernandez</h2>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="../../controllers/cerrarSesion.php">
                 <img src="../../public/assets/img/boton-eliminar.png" alt="" class="cerrar-sesion">
               </a>
             </li>

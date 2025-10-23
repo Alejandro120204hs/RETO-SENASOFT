@@ -33,7 +33,7 @@
               <h2>Alejandro Hernandez</h2>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><img src="../../public/assets/img/boton-eliminar.png" alt="Cerrar sesión" class="cerrar-sesion" /></a>
+              <a class="nav-link" href="../../controllers/cerrarSesion.php"><img src="../../public/assets/img/boton-eliminar.png" alt="Cerrar sesión" class="cerrar-sesion" /></a>
             </li>
           </ul>
         </div>
